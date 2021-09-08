@@ -27,17 +27,15 @@ class StudentDetailFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         viewModel.fetch()
-
-        txtId.setText(viewModel.studentLD.value?.id)
-        txtName.setText(viewModel.studentLD.value?.name)
-        txtBod.setText(viewModel.studentLD.value?.bod)
-        txtPhone.setText(viewModel.studentLD.value?.phone)
         observeDetailViewModel()
     }
 
     fun observeDetailViewModel() {
         viewModel.studentLD.observe(viewLifecycleOwner, Observer {
-            //lipsum
+            txtId.setText(viewModel.studentLD.value?.id)
+            txtName.setText(viewModel.studentLD.value?.name)
+            txtBod.setText(viewModel.studentLD.value?.bod)
+            txtPhone.setText(viewModel.studentLD.value?.phone)
         })
     }
 }

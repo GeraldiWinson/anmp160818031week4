@@ -38,13 +38,6 @@ class StudentListFragment : Fragment() {
         observeViewModel()
     }
 
-
-//    fun updateStudentList(newStudentList: List<Student>) {
-//        studentList.clear()
-//        studentList.addAll(newStudentList)
-//        notifyDataSetChanged()
-//    }
-
     fun observeViewModel() {
         viewModel.studentsLD.observe(viewLifecycleOwner, Observer {
             studentListAdapter.updateStudentList(it)
