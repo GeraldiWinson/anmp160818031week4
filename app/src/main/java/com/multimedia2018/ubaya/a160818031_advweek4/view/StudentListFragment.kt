@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.multimedia2018.ubaya.a160818031_advweek4.R
+import com.multimedia2018.ubaya.a160818031_advweek4.model.Student
 import com.multimedia2018.ubaya.a160818031_advweek4.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_student_list.*
 
@@ -36,6 +37,13 @@ class StudentListFragment : Fragment() {
 
         observeViewModel()
     }
+
+
+//    fun updateStudentList(newStudentList: List<Student>) {
+//        studentList.clear()
+//        studentList.addAll(newStudentList)
+//        notifyDataSetChanged()
+//    }
 
     fun observeViewModel() {
         viewModel.studentsLD.observe(viewLifecycleOwner, Observer {
