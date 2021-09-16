@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.multimedia2018.ubaya.a160818031_advweek4.R
+import com.multimedia2018.ubaya.a160818031_advweek4.util.loadImage
 import com.multimedia2018.ubaya.a160818031_advweek4.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.fragment_student_detail.*
 
@@ -24,10 +25,12 @@ class StudentDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        viewModel.fetch()
-        observeDetailViewModel()
+        arguments?.let {
+            var studentId = StudentDetailFragmentArgs.fromBundle(requireArguments()).studentId
+            viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+            viewModel.fetch(studentId)
+            observeDetailViewModel()
+        }
     }
 
     fun observeDetailViewModel() {
@@ -36,6 +39,7 @@ class StudentDetailFragment : Fragment() {
             txtName.setText(viewModel.studentLD.value?.name)
             txtBod.setText(viewModel.studentLD.value?.bod)
             txtPhone.setText(viewModel.studentLD.value?.phone)
+            imageView2.loadImage(viewModel.studentLD.value?.photoUrl.toString(), progressBarDetail)
         })
     }
 }

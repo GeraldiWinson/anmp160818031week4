@@ -34,7 +34,8 @@ class StudentListAdapter(val studentList:ArrayList<Student>) :
         holder.view.imageView.loadImage(studentList[position].photoUrl.toString(), holder.view.progressBar)
 
         holder.view.btnDetail.setOnClickListener{
-            val action = StudentListFragmentDirections.actionStudentDetail()
+            var studentId = studentList[position].id.toString()
+            val action = StudentListFragmentDirections.actionStudentDetail(studentId)
             Navigation.findNavController(it).navigate(action)
         }
     }
